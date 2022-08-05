@@ -30,7 +30,7 @@ a {
   color: var(--main-pink) !important;
 }
 
-.nav-link:hover{
+.nav-link:hover,a:hover{
   color: var(--main-pink) !important;
 }
 

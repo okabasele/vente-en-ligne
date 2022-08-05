@@ -2,6 +2,7 @@
     background-color: var(--main-bg-nav);
     box-shadow: 0 5px 20px -17px rgb(0 0 0 / 34%);
     padding: 10px;
+    height: 60px !important;
 }
 .navIcon{
     border: 1px solid var(--main-white);
@@ -18,4 +19,61 @@
 .navIcon:hover{
     color: var(--main-white);
     background-color: var(--main-pink);
+}
+
+.searchWrap {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: .5s all ease;
+    -o-transition: .5s all ease;
+    transition: .5s all ease;
+}
+
+.searchWrapActive {
+    opacity: 1;
+    visibility: visible;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 999;
+    -webkit-transition: .5s all ease;
+    -o-transition: .5s all ease;
+    transition: .5s all ease;
+}
+
+.searchClose{
+    z-index: 4;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(25%);
+    font-size: x-large;
+}
+
+.formControl {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    -webkit-transform: translateY(-10%);
+    -ms-transform: translateY(-10%);
+    transform: translateY(-10%);
+    border: none;
+    z-index: 3;
+    font-size: 40px;
+}
+
+#collapseCart {
+    
 }
