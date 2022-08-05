@@ -1,5 +1,12 @@
+:root{
+  --main-pink:#ee4266;
+  --main-white:#e6e6e6;
+  --main-bg:#fafafa;
+  --main-bg-nav:#fff
+}
 html,
 body {
+  background-color: var(--main-bg);
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -13,6 +20,18 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.nav-link{
+  color: rgba(0, 0, 0, 0.9) !important;
+}
+
+.nav-link.active{
+  color: var(--main-pink) !important;
+}
+
+.nav-link:hover{
+  color: var(--main-pink) !important;
 }
 
 @media (prefers-color-scheme: dark) {

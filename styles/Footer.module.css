@@ -1,0 +1,9 @@
+.footer{
+    background-color: var(--main-bg-nav);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+    padding: 0.5rem !important;
+  }

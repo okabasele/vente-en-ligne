@@ -1,18 +1,9 @@
-import Head from "next/head";
+import styles from "../../styles/Navbar.module.css";
 import Link from "next/link";
-// import styles from "../styles/Home.module.css";
 
-export default function Home() {
-  return (
-    <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>MyShop</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-{/* 
-      <main>
-        <nav className="navbar navbar-expand-lg sticky-top" id={styles.navBar}>
+export default function Navbar({ children }) {
+    return <>
+      <nav className="navbar navbar-expand-lg sticky-top" id={styles.navBar}>
           <div className="container">
             <Link href="#">
               <a className="navbar-brand mb-0 h1">MySHOP</a>
@@ -72,25 +63,5 @@ export default function Home() {
             </div>
           </div>
         </nav>
-      </main> */}
-
-      {/* <footer className="fixed-bottom p-2">
-        <p className="text-center">©2022 MyShop Tous droits réservés</p>
-        <ul className="navbar-nav justify-content-center flex-row">
-          <li className="nav-item">
-            <Link href="#">
-              <a className="nav-link">Accueil</a>
-            </Link>
-          </li>
-          <li className="nav-item vr mx-2">
-          </li>
-          <li className="nav-item">
-            <Link href="#">
-              <a className="nav-link">Contact</a>
-            </Link>
-          </li>
-        </ul>
-      </footer> */}
-    </>
-  );
-}
+    </>;
+  }
