@@ -1,41 +1,29 @@
 import styles from "../../styles/Navbar.module.css";
 import Link from "next/link";
 import { useState } from "react";
+import SearchBar from "./SearchBar";
 
 export default function Navbar({ children }) {
-  const [searchBar, setSearchBar] = useState(styles.searchWrap);
+  const [searchWrap, setSearchWrap] = useState(styles.searchWrap);
   const [navBar, setNavBar] = useState("container");
+
   const handleSearchButtonClick = (e) => {
     e.preventDefault();
     console.log("ok");
-    if (searchBar == styles.searchWrap) {
-      setSearchBar(styles.searchWrapActive);
+    if (searchWrap == styles.searchWrap) {
+      setSearchWrap(styles.searchWrapActive);
       setNavBar("invisible");
     } else {
-      setSearchBar(styles.searchWrap);
+      setSearchWrap(styles.searchWrap);
       setNavBar("container");
 
     }
   };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg sticky-top" id={styles.navBar}>
-        <div className={searchBar}>
-          <div className="container position-relative">
-            <Link href="#">
-              <a  onClick={(e) => handleSearchButtonClick(e)} className={styles.searchClose}>
-                <i className="bi bi-x-lg"></i>
-              </a>
-            </Link>
-            <form action="#" method="post">
-              <input
-                type="text"
-                className={styles.formControl}
-                placeholder="Rechercher..."
-              />
-            </form>
-          </div>
-        </div>
+        <SearchBar searchWrap={searchWrap} searchClose={styles.searchClose} handleSearchButtonClick={handleSearchButtonClick} formControl={styles.formControl} />
         <div className={navBar}>
           <Link href="#">
             <a className="navbar-brand mb-0 h1">MySHOP</a>
