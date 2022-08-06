@@ -1,0 +1,13 @@
+.cartContainer {
+    position: absolute;
+    width: 25em;
+    height: calc(90% - 60px);
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    border: 1px solid black;
+}
+
+.prodImage{
+    width: 1em;
+}
