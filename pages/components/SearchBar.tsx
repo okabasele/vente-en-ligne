@@ -1,7 +1,14 @@
 import Link from "next/link";
 
-export default function SearchBar({searchWrap,searchClose,handleSearchButtonClick,formControl}) {
-    const handleSubmit = (e) => {
+export type SearchBarProps = {
+  searchWrap:string
+  searchClose:string
+  handleSearchButtonClick:(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
+  formControl:string
+}
+
+export default function SearchBar({searchWrap,searchClose,handleSearchButtonClick,formControl}:SearchBarProps) {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         // Chercher l'article dans le local Storage
         // Retourner les articles qui contient le texte de la recherche

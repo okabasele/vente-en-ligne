@@ -2,7 +2,8 @@
   --main-pink:#ee4266;
   --main-white:#e6e6e6;
   --main-bg:#fafafa;
-  --main-bg-nav:#fff
+  --main-bg-nav:#fff;
+  --main-black:rgba(0, 0, 0, 0.9);
 }
 html,
 body {
@@ -23,7 +24,7 @@ a {
 }
 
 .nav-link{
-  color: rgba(0, 0, 0, 0.9) !important;
+  color: var(--main-black) !important;
 }
 
 .nav-link.active{

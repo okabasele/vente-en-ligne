@@ -3,11 +3,11 @@ import Link from "next/link";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 
-export default function Navbar({ children }) {
+export default function Navbar() {
   const [searchWrap, setSearchWrap] = useState(styles.searchWrap);
   const [navBar, setNavBar] = useState("container");
 
-  const handleSearchButtonClick = (e) => {
+  const handleSearchButtonClick = (e:React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     console.log("ok");
     if (searchWrap == styles.searchWrap) {
