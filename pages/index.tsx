@@ -14,31 +14,13 @@ export type Product = {
   colorID: number;
 };
 
-export type HomeProduct = {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  type: string;
-};
-
 export default function Home() {
   const supabaseClient = useSupabase();
 
-  const product: HomeProduct = {
-    id: 1,
-    title: "T-shirt blanc",
-    price: 5.99,
-    image:
-      "https://static.webshopapp.com/shops/279311/files/315232457/60x60x2/image.jpg",
-    type: "Robes",
-  };
-  const [products, setProducts] = useState(Array(2).fill(product));
+  const [products, setProducts] = useState([]);
   const carousel = [
-    // "https://cdn-media.prettylittlething.com/bms/media/2022/08/08/NTYtB6wDRjVFXe8VLpTnZtyD2UOr7DNdxrIkM9UB.jpg?imwidth=2048",
     "https://images.unsplash.com/photo-1603252109360-909baaf261c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
     "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
-    "",
   ];
   useEffect(() => {
     async function readSize() {
@@ -83,11 +65,11 @@ export default function Home() {
           </div>
           <div className={styles.homeButton}>
             <Link href="#">
-              <a className="btn btn-pink">SHOP</a>
+              <a className="btn btn-pink">SHOPPER</a>
             </Link>
           </div>
         </div>
-        <hr />
+        <div className="bg-secondary p-3"></div>
         <div className={styles.type}>
 
         <div className={styles.typeWrap}>
@@ -115,7 +97,7 @@ export default function Home() {
             </div>
             <div className={styles.homeButton}>
               <Link href="#">
-                <a className="btn btn-pink">ROBES</a>
+                <a className="btn btn-pink">JUPES</a>
               </Link>
             </div>
           </div>
@@ -129,7 +111,7 @@ export default function Home() {
             </div>
             <div className={styles.homeButton}>
               <Link href="#">
-                <a className="btn btn-pink">ROBES</a>
+                <a className="btn btn-pink">T-SHIRT</a>
               </Link>
             </div>
           </div>
@@ -143,7 +125,7 @@ export default function Home() {
             </div>
             <div className={styles.homeButton}>
               <Link href="#">
-                <a className="btn btn-pink">ROBES</a>
+                <a className="btn btn-pink">CHEMISES</a>
               </Link>
             </div>
           </div>
