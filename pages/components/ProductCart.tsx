@@ -17,7 +17,7 @@ export default function ProductCart({
 }: ProductCartProps) {
   return (
     <>
-      <li key={product.id} className="p-0 list-group-item bg-transparent">
+      <li className="p-0 list-group-item bg-transparent">
         <div className="prod-wrap d-flex">
           <div className="prod-image position-relative w-25">
             <Image src={product.image} layout="fill" />

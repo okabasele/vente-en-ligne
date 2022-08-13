@@ -66,6 +66,7 @@ export default function Cart({
                   ) : (
                     products.map((product) => (
                       <ProductCart
+                      key={product.id}
                         product={product}
                         handleAddProduct={handleAddProduct}
                         handleDeleteProduct={handleDeleteProduct}
