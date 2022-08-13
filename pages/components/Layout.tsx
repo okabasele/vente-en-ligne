@@ -6,6 +6,7 @@ import Head from "next/head";
 import React from "react";
 import Cart, { CartProduct } from "./Cart";
 import { getFormattedCost } from "../../utils/prices-format";
+import styles from "../../styles/Layout.module.css";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const product: CartProduct = {
@@ -79,7 +80,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           handleDeleteProduct={handleDeleteProduct}
         />
       ) : null}
-      <main>{children}</main>
+      <main className={styles.main}>
+        <div className={styles.mainWrap}>
+        {children}
+        </div>
+        </main>
       <Footer />
     </>
   );

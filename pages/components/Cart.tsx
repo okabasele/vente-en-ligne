@@ -3,16 +3,6 @@ import { useState, useEffect } from "react";
 import styles from "../../styles/Cart.module.css";
 import ProductCart from "./ProductCart";
 
-export type Product = {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  image: string;
-  typeID: number;
-  colorID: number;
-};
-
 export type CartProduct = {
   id: number;
   title: string;

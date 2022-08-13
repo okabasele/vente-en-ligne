@@ -4,6 +4,20 @@
     padding: 10px;
     height: 60px !important;
 }
+
+.navWrap{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 15px;
+}
+
 .navIcon{
     border: 1px solid var(--main-white);
     width: 40px;
@@ -74,8 +88,4 @@
     border: none;
     z-index: 3;
     font-size: 40px;
-}
-
-#collapseCart {
-    
 }

@@ -1,0 +1,38 @@
+.containerHome{
+    width: 100%;
+    height: 100%;
+}
+
+#carouselHome {
+    height: 70%;
+}
+
+.homeButton {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 18px;
+
+}
+.type{
+    width: 100%;
+    height: 100%;
+}
+.typeWrap{
+    background-color: var(--main-pink);
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.typeContent{
+    height: 100%;
+    width: 48%;
+    position: relative;
+    margin-left: 15px;
+}

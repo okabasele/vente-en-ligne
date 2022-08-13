@@ -8,7 +8,7 @@ export type NavbarProps = {
 }
 export default function Navbar({handleCartButtonClick}:NavbarProps) {
   const [searchWrap, setSearchWrap] = useState(styles.searchWrap);
-  const [navBar, setNavBar] = useState("container");
+  const [navBar, setNavBar] = useState(styles.navWrap);
 
   const handleSearchButtonClick = (e:React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ export default function Navbar({handleCartButtonClick}:NavbarProps) {
       setNavBar("invisible");
     } else {
       setSearchWrap(styles.searchWrap);
-      setNavBar("container");
+      setNavBar(styles.navWrap);
 
     }
   };
