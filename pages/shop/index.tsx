@@ -27,7 +27,7 @@ export default function Shop() {
     <>
       <Breadcrumb />
       <div className="shop-body px-4">
-        <div className="d-flex justify-content-end">
+        <div className="my-3 d-flex justify-content-end">
           <Select
             name="sort"
             label="TRIER PAR:"
@@ -42,7 +42,7 @@ export default function Shop() {
             <Filter name={"Taille"} options={optionsTemplate} />
             <div className="price"></div>
           </div>
-          <div className="product-list-container">
+          <div className="product-list-container row row-cols-3">
             {products.map((product) => (
               <ProductShop product={product} />
             ))}

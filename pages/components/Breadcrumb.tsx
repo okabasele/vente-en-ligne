@@ -6,7 +6,7 @@ export default function Breadcrumb() {
   return (
     <>
       <div className={styles.banner}>
-        <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb" className={styles.breadcrumbContent}>
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
               <Link href="/">

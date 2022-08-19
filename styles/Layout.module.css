@@ -1,6 +1,5 @@
 .main {
-    position: absolute;
-    height: calc(90% - 60px);
+    height: calc(90vh - 60px);
     width: 100%;
 }
 
