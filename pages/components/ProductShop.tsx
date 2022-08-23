@@ -8,11 +8,12 @@ export type ProductCartProps = {
 };
 
 export default function ProductCart({ product }: ProductCartProps) {
+  const link = "/product/"+product.id ;
   return (
     <>
     <div className="col text-center">
 
-      <Link href="#">
+      <Link href={link}>
         <a>
           <div className={styles.productImageBlock}>
             <div className="image-wrap position-relative w-100 h-100">

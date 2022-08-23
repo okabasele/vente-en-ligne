@@ -25,7 +25,7 @@ export default function Shop() {
   const optionsTemplate = ["Tops", "Jupes", "Pantalon"];
   return (
     <>
-      <Breadcrumb />
+      <Breadcrumb links={[{ link: "/", name: "Accueil" }]} activePage="Shop" />
       <div className="shop-body px-4">
         <div className="my-3 d-flex justify-content-end">
           <Select
