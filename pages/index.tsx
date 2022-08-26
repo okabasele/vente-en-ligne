@@ -13,7 +13,7 @@ export default function Home() {
       .from('Size')
       .select('id, name')
       
-      console.log(data,error);
+      // console.log(data,error);
       
     }
     

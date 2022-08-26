@@ -1,9 +1,11 @@
 :root{
   --main-pink:#ee4266;
   --main-white:#e6e6e6;
-  --main-bg:#fafafa;
+  --main-bg:#f4f7f8;
   --main-bg-nav:#fff;
   --main-black:rgba(0, 0, 0, 0.9);
+  --main-bg-dark: rgb(28, 28, 28);
+  --main-grey:#E4E4E4;
 }
 html,
 body {
@@ -31,7 +33,7 @@ a {
   color: var(--main-pink) !important;
 }
 
-.nav-link:hover,a:hover{
+.nav-link:hover{
   color: var(--main-pink) !important;
 }
 
@@ -40,7 +42,8 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+  color: var(--main-white) !important;
+  background: var(--main-black) !important;
+
   }
 }

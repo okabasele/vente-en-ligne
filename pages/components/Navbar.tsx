@@ -3,13 +3,15 @@ import Link from "next/link";
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 
-export default function Navbar() {
+export type NavbarProps = {
+  handleCartButtonClick: (e:React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+}
+export default function Navbar({handleCartButtonClick}:NavbarProps) {
   const [searchWrap, setSearchWrap] = useState(styles.searchWrap);
   const [navBar, setNavBar] = useState("container");
 
   const handleSearchButtonClick = (e:React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
-    console.log("ok");
     if (searchWrap == styles.searchWrap) {
       setSearchWrap(styles.searchWrapActive);
       setNavBar("invisible");
@@ -19,7 +21,6 @@ export default function Navbar() {
 
     }
   };
-
   return (
     <>
       <nav className="navbar navbar-expand-lg sticky-top" id={styles.navBar}>
@@ -36,7 +37,7 @@ export default function Navbar() {
                 </a>
               </Link>
               <Link href="#">
-                <a className={styles.navIcon}>
+                <a onClick={(e)=>handleCartButtonClick(e)} className={styles.navIcon}>
                   <span className="bi bi-bag"></span>
                 </a>
               </Link>
