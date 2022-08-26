@@ -31,6 +31,8 @@ export default function Cart({
   const [showing, setShowing] = useState(true);
   useEffect(()=>{setShowing(showCart)},[showCart])
 
+  console.log({ products });
+  
   return (
     <>
       {showing ? (

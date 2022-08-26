@@ -36,12 +36,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   // };
   // const [products, setProducts] = React.useState([product]);
   const [showCart, setShowCart] = React.useState(false);
+  
   const totalCost = products.reduce((acc, product) => {
-    acc += product.price * product.quantity;
-    const totalCost = acc.toString();
-    return getFormattedCost(totalCost);
-  }, "0");
+    return acc += product.price * product.quantity;
+    // const totalCost = acc.toString();
+    // return getFormattedCost(totalCost);
+  }, 0);
 
+  console.log({ totalCost, products });
+  
   const handleAddProduct = (id: number) => {
     const updatedProducts = products.map((product) => {
       if (product.id === id) {
@@ -95,7 +98,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           showCart={showCart}
           products={products}
           handleAddProduct={handleAddProduct}
-          totalCost={totalCost}
+          totalCost={getFormattedCost(totalCost.toString())}
           handleSubProduct={handleSubProduct}
           handleDeleteProduct={handleDeleteProduct}
         />
