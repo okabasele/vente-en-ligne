@@ -15,7 +15,7 @@ export type ShopProduct = {
 };
 
 export default function Shop() {
-  const [products, setProducts] = useState(Array<Product>);
+  const [products, setProducts] = useState<Product[]>([]);
   // const optionsTemplate = ["Tops", "Jupes", "Pantalon"];
 
   useEffect(() => {
@@ -24,14 +24,16 @@ export default function Shop() {
       // console.log(productsJSON);
 
       if (productsJSON) {
-        let data: Array<Product> = JSON.parse(productsJSON);
+        const data: Array<Product> = JSON.parse(productsJSON);
+        console.log({ data })
+
         setProducts(data);
       }
     }
 
-    console.log(products);
   }, []);
-
+  
+  console.log(products);
   return (
     <>
       <Breadcrumb links={[{ link: "/", name: "Accueil" }]} activePage="Shop" />

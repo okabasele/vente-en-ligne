@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import styles from "../../styles/Cart.module.css";
+import { getFormattedCost } from "../../utils/prices-format";
 import ProductCart from "./ProductCart";
 
 export type CartProduct = {
@@ -13,27 +14,65 @@ export type CartProduct = {
 
 export type CartProps = {
   showCart:boolean,
-  products: Array<CartProduct>;
-  totalCost: string;
-  handleAddProduct: (id: number) => void;
-  handleSubProduct: (id: number) => void;
-  handleDeleteProduct: (id: number) => void;
+  setShowCart: React.Dispatch<React.SetStateAction<boolean>>,
 };
 
-export default function Cart({
-  showCart,
-  products,
-  handleAddProduct,
-  handleSubProduct,
-  handleDeleteProduct,
-  totalCost,
-}: CartProps) {
-  const [showing, setShowing] = useState(true);
-  useEffect(()=>{setShowing(showCart)},[showCart])
+export default function Cart({ showCart, setShowCart }: CartProps) {
+  const [products, setProducts] = useState<CartProduct[]>([]);
+
+  const totalCost = products.reduce((acc, product) => acc += product.price * product.quantity, 0);
+
+  useEffect(() => {
+    if (window) {
+      const cartJSON = localStorage.getItem("cart");
+      
+      if (cartJSON) {
+        let data: Array<CartProduct> = JSON.parse(cartJSON);
+        setProducts(data);
+      }
+    }
+  }, []);
+
+  
+
+  
+  const handleAddProduct = (id: number) => {
+    const updatedProducts = products.map((product) => {
+      if (product.id === id) {
+        product.quantity = product.quantity + 1;
+      }
+      return product;
+    });
+
+    setProducts([...updatedProducts]);
+    localStorage.setItem("cart", JSON.stringify(updatedProducts));
+  };
+
+  const handleSubProduct = (id: number) => {
+    const updatedProducts = products.map((product) => {
+      if (product.id === id) {
+        if (product.quantity - 1 >= 0) {
+          product.quantity = product.quantity - 1;
+        }
+      }
+      return product;
+    });
+
+    setProducts([...updatedProducts]);
+    localStorage.setItem("cart", JSON.stringify(updatedProducts));
+  };
+
+  const handleDeleteProduct = (id: number) => {
+    const updatedProducts = products.filter((product) => product.id !== id);
+    setProducts([...updatedProducts]);
+    localStorage.setItem("cart", JSON.stringify(updatedProducts));
+  };
+
+
 
   return (
     <>
-      {showing ? (
+      {showCart ? (
         <div className={styles.cartPopUp}>
           <div className={styles.cartContainer}>
             <div className="cart-wrap position-relative h-100">
@@ -68,11 +107,11 @@ export default function Cart({
               <div className={styles.footerCart}>
                 <div className="cart-total d-flex align-items-center justify-content-center">
                   <p className="mb-0  fw-bold">Sous-total: </p>
-                  <p className=" mb-0 ms-1">{totalCost} €</p>
+                  <p className=" mb-0 ms-1">{getFormattedCost(totalCost.toString())} €</p>
                 </div>
                 <div className="cart-buttons d-flex flex-column">
                   <button
-                    onClick={() => setShowing(!showing)}
+                    onClick={() => setShowCart((prevShowCart) => !prevShowCart)}
                     className="mb-2 btn btn-secondary"
                   >
                     Continuer les achats

@@ -1,63 +1,70 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useSupabase } from "../../utils/useSupabase";
 
 import Breadcrumb from "../components/Breadcrumb";
 import { Product } from "..";
 import styles from "../../styles/ProductDetails.module.css";
 import { CartProduct } from "../components/Cart";
+import { GetStaticProps, GetStaticPropsContext } from "next";
 
 export default function ProductDetails() {
   const router = useRouter();
   const { pid } = router.query;
-const [product, setProduct] = useState<Product>({})
+  const [product, setProduct] = useState<Product | null>(null)
 
-const addToCart = (
-  id:number
-) => {
-    if (window) {
-      const cartJSON = localStorage.getItem("cart");
-      // console.log(cartJSON);
+  const addToCart = (id:number) => {
+      if (window) {
+        const cartJSON = localStorage.getItem("cart");
 
-      if (cartJSON) {
-        let data: Array<CartProduct> = JSON.parse(cartJSON);
-        let newProduct : CartProduct = {
-          id: product.id,
-          title: product.title,
-          price: product.price,
-          image: product.image,
-          quantity:1
+        if (cartJSON && JSON.parse(cartJSON).length > 0 && product) {
+          const data: Array<CartProduct> = JSON.parse(cartJSON);
+          const newProduct : CartProduct = {
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            image: product.image,
+            quantity:1
+          }
+        if(!data.find((productToCompare) => productToCompare.id === product.id)) {
+            data.push(newProduct)
+            localStorage.setItem("cart",JSON.stringify(data))
+          }
+          
+        } else if(product) {
+          const data : CartProduct = {
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            image: product.image,
+            quantity:1
+          }
+          localStorage.setItem("cart",JSON.stringify([data]))
         }
-        data.push(newProduct)
-        localStorage.setItem("cart",JSON.stringify(data))
-      } else {
-        let data : CartProduct = {
-          id: product.id,
-          title: product.title,
-          price: product.price,
-          image: product.image,
-          quantity:1
-        }
-        localStorage.setItem("cart",JSON.stringify([data]))
       }
-    }
-};
+  };
 
   useEffect(() => {
     if (window) {
       const productsJSON = localStorage.getItem("products");
-      // console.log(productsJSON);
 
       if (productsJSON) {
-        let data: Array<Product> = JSON.parse(productsJSON);
-        let productToFind = data.find(e=>e.id.toString()===pid)
+        const data: Array<Product> = JSON.parse(productsJSON);
+        const productToFind = data.find(e=>e.id.toString()===pid)
+        
         if (productToFind) {
           setProduct(productToFind);
         }
       }
     }
 
-  }, []);
+  }, [pid]);
+
+  if(!product) return <h1>Loading...</h1>
+
+  // console.log(product);
+  
   return (
     <>
       <Breadcrumb
@@ -80,8 +87,8 @@ const addToCart = (
           <div className="color">
             <p className="fw-bold">Couleur: {product.color}</p>
           </div>
-          <div className="size">
-            <p className="fw-bold">Taille:</p>
+          <div className="size d-flex align-items-center">
+            <p className="fw-bold m-0 me-2">Taille:</p>
             <div className={styles.sizeOption}>S</div>
             <div className={styles.sizeOption}>M</div>
             <div className={styles.sizeOption}>L</div>

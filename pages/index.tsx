@@ -39,11 +39,11 @@ export type TypeClothes = {
 export default function Home() {
   const supabaseClient = useSupabase();
 
-  const [products, setProducts] = useState(Array<Product>);
-  const [size, setSize] = useState(Array<Size>);
-  const [colors, setColors] = useState(Array<Color>);
-  const [categories, setCategories] = useState(Array<Category>);
-  const [typeClothes, setTypeClothes] = useState(Array<TypeClothes>);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [size, setSize] = useState<Size[]>([]);
+  const [colors, setColors] = useState<Color[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [typeClothes, setTypeClothes] = useState<TypeClothes[]>([]);
   const carousel = [
     "https://images.unsplash.com/photo-1603252109360-909baaf261c7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
     "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80",
@@ -51,18 +51,18 @@ export default function Home() {
   useEffect(() => {
     async function readProducts() {
       // Reading
-      let { data, error } = await supabaseClient.from("Product").select("*");
-      if (data) {
-        let tmp: Array<Product> = [];
-        data.map((element) => {
-          // console.log(element);
+      const { data, error } = await supabaseClient.from("Product").select("*");
 
-          let typeProd = typeClothes.find((e) => e.id === element.typeID);
-          let colorProd = colors.find((e) => e.id === element.colorID);
-          let categoryProd = categories.find(
+      if (data) {
+        const productsToSave = data.map((element) => {
+          const typeProd = typeClothes.find((e) => e.id === element.typeID);
+          
+          const colorProd = colors.find((e) => e.id === element.colorID);
+          const categoryProd = categories.find(
             (e) => e.id === typeProd?.categoryID
           );
-          tmp.push({
+          
+          return {
             id: element.id,
             title: element.title,
             description: element.description,
@@ -71,11 +71,12 @@ export default function Home() {
             type: typeProd?.name || "",
             category: categoryProd?.name || "",
             color: colorProd?.name || "",
-          });
+          }
         });
-        setProducts(tmp);
+        
+        setProducts([...productsToSave]);
 
-        localStorage.setItem("products", JSON.stringify(products));
+        localStorage.setItem("products", JSON.stringify(productsToSave));
         
         if (!localStorage.getItem("cart")) {
           localStorage.setItem("cart", "");
@@ -90,7 +91,6 @@ export default function Home() {
         .select("id, name");
       if (data) {
         setSize(data);
-        // console.log(data);
       }
     }
     async function readColors() {
@@ -100,7 +100,6 @@ export default function Home() {
         .select("id, name");
       if (data) {
         setColors(data);
-        // console.log(data);
       }
     }
     async function readTypeClothes() {
@@ -110,7 +109,6 @@ export default function Home() {
         .select("id, name,categoryID");
       if (data) {
         setTypeClothes(data);
-        // console.log(data);
       }
     }
 
@@ -121,7 +119,6 @@ export default function Home() {
         .select("id, name");
       if (data) {
         setCategories(data);
-        // console.log(data);
       }
     }
 
@@ -161,7 +158,7 @@ export default function Home() {
             })}
           </div>
           <div className={styles.homeButton}>
-            <Link href="#">
+            <Link href="/shop">
               <a className="btn btn-pink">SHOPPER</a>
             </Link>
           </div>
