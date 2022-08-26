@@ -17,9 +17,8 @@ export default function ProductDetails() {
   const addToCart = (id:number) => {
       if (window) {
         const cartJSON = localStorage.getItem("cart");
-        console.log(cartJSON);
 
-        if (cartJSON && product) {
+        if (cartJSON && JSON.parse(cartJSON).length > 0 && product) {
           const data: Array<CartProduct> = JSON.parse(cartJSON);
           const newProduct : CartProduct = {
             id: product.id,
@@ -28,7 +27,7 @@ export default function ProductDetails() {
             image: product.image,
             quantity:1
           }
-          if(!data.find((productToCompare) => productToCompare.id === product.id)) {
+        if(!data.find((productToCompare) => productToCompare.id === product.id)) {
             data.push(newProduct)
             localStorage.setItem("cart",JSON.stringify(data))
           }
