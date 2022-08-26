@@ -144,7 +144,7 @@ export default function Home() {
             {carousel.map((imageUrl, id) => {
               if (id != 0) {
                 return (
-                  <div className="carousel-item h-100">
+                  <div key={id} className="carousel-item h-100">
                     <div className="prod-image d-block w-100 ">
                       <Image src={imageUrl} objectFit="cover" layout="fill" />
                     </div>
@@ -152,7 +152,7 @@ export default function Home() {
                 );
               }
               return (
-                <div className="carousel-item active h-100">
+                <div key={id} className="carousel-item active h-100">
                   <div className="prod-image d-block w-100">
                     <Image src={imageUrl} objectFit="cover" layout="fill" />
                   </div>
