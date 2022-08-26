@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import { ShopProduct } from "../shop/index";
@@ -8,7 +9,14 @@ export type ProductCartProps = {
 };
 
 export default function ProductShop({ product }: ProductCartProps) {
-  const link = "/product/"+product.id ;
+  const [link, setLink] = useState('')
+
+  useEffect(() => {
+    if(product && product.id) {
+      setLink("/product/"+product.id)
+    }
+  }, [])
+
   return (
     <>
     <div className="col text-center">

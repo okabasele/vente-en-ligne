@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { CartProduct } from "./Cart";
-
+import { useState, useEffect } from 'react';
 
 export type ProductCartProps = {
     product: CartProduct;
@@ -15,12 +15,21 @@ export default function ProductCart({
   handleSubProduct,
   handleDeleteProduct,
 }: ProductCartProps) {
+  const [productImage, setProductImage] = useState('')
+
+  useEffect(() => {
+    if(product && product.image) {
+      setProductImage(product.image)
+    }
+  }, [])
+  
+
   return (
     <>
       <li className="p-0 list-group-item bg-transparent">
         <div className="prod-wrap d-flex">
           <div className="prod-image position-relative w-25">
-            <Image src={product.image} layout="fill" />
+            {productImage && <Image src={product.image} layout="fill" />}
           </div>
           <div className="prod-details mx-3">
             <p>{product.title}</p>

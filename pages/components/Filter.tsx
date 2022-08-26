@@ -3,12 +3,10 @@ import { useState } from "react";
 
 export type SelectProps = {
   name: string;
-  options: Array<string>;
+  options: string[];
 };
 
 export default function Filter({ name, options }: SelectProps) {
-  const [value, setValue] = useState(options[0]);
-
   return (
     <>
     <Link href="#">

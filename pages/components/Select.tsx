@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export type SelectProps = {
   name: string,
@@ -7,7 +7,13 @@ export type SelectProps = {
 };
 
 export default function Select({ name,label,options }: SelectProps) {
-  const [value, setValue] = useState(options[0]);
+  const [value, setValue] = useState('');
+
+  useEffect(() => {
+    if(options.length > 0) {
+      setValue(options[0])
+    }
+  }, [])
 
   return (
     <>

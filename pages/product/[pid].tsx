@@ -7,7 +7,6 @@ import Breadcrumb from "../components/Breadcrumb";
 import { Product } from "..";
 import styles from "../../styles/ProductDetails.module.css";
 import { CartProduct } from "../components/Cart";
-import { GetStaticProps, GetStaticPropsContext } from "next";
 
 export default function ProductDetails() {
   const router = useRouter();
