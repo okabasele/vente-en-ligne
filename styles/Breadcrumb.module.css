@@ -1,0 +1,22 @@
+.banner {
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.bannerImage {
+    height: 100%;
+    width: 100%;
+}
+
+.breadcrumbLink:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.breadcrumbContent {
+    position:absolute;
+    z-index: 10;
+}

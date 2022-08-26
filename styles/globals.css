@@ -1,5 +1,5 @@
 :root{
-  --main-pink:#ee4266;
+  --main-pink:#fdbedb;
   --main-white:#e6e6e6;
   --main-bg:#f4f7f8;
   --main-bg-nav:#fff;
@@ -9,6 +9,7 @@
 }
 html,
 body {
+  overflow-y: auto;
   background-color: var(--main-bg);
   padding: 0;
   margin: 0;
@@ -36,6 +37,19 @@ a {
 .nav-link:hover{
   color: var(--main-pink) !important;
 }
+.btn-pink,
+.btn-pink:active,
+.btn-pink:visited,
+.btn-pink:focus {
+  background-color: var(--main-white) ;
+  border-color: var(--main-white) ;
+    color: var(--main-black);
+}
+
+.btn-pink:hover{
+  background-color: var(--main-pink) ;
+  border-color: var(--main-pink) ;
+}
 
 @media (prefers-color-scheme: dark) {
   html {
@@ -45,5 +59,8 @@ a {
   color: var(--main-white) !important;
   background: var(--main-black) !important;
 
+  }
+  :root{
+    --main-pink:#ee4266;
   }
 }

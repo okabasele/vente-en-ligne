@@ -3,16 +3,6 @@ import { useState, useEffect } from "react";
 import styles from "../../styles/Cart.module.css";
 import ProductCart from "./ProductCart";
 
-export type Product = {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  image: string;
-  typeID: number;
-  colorID: number;
-};
-
 export type CartProduct = {
   id: number;
   title: string;
@@ -39,7 +29,6 @@ export default function Cart({
   totalCost,
 }: CartProps) {
   const [showing, setShowing] = useState(true);
-
   useEffect(()=>{setShowing(showCart)},[showCart])
 
   return (
@@ -64,7 +53,7 @@ export default function Cart({
                       Aucun produit n’a été trouvé...
                     </p>
                   ) : (
-                    products.map((product) => (
+                    products.map((product : CartProduct) => (
                       <ProductCart
                       key={product.id}
                         product={product}

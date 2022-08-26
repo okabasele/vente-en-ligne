@@ -24,7 +24,7 @@ export default function ProductCart({
           </div>
           <div className="prod-details mx-3">
             <p>{product.title}</p>
-            <p>{product.price}</p>
+            <p>{product.price}€</p>
           </div>
           <div className="prod-quantity d-flex align-items-center">
             <button onClick={() => handleSubProduct(product.id)}>-</button>
