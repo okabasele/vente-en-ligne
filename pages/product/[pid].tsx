@@ -63,6 +63,8 @@ export default function ProductDetails() {
 
   if(!product) return <h1>Loading...</h1>
 
+  // console.log(product);
+  
   return (
     <>
       <Breadcrumb
@@ -85,8 +87,8 @@ export default function ProductDetails() {
           <div className="color">
             <p className="fw-bold">Couleur: {product.color}</p>
           </div>
-          <div className="size">
-            <p className="fw-bold">Taille:</p>
+          <div className="size d-flex align-items-center">
+            <p className="fw-bold m-0 me-2">Taille:</p>
             <div className={styles.sizeOption}>S</div>
             <div className={styles.sizeOption}>M</div>
             <div className={styles.sizeOption}>L</div>

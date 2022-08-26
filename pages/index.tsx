@@ -56,6 +56,7 @@ export default function Home() {
       if (data) {
         const productsToSave = data.map((element) => {
           const typeProd = typeClothes.find((e) => e.id === element.typeID);
+          
           const colorProd = colors.find((e) => e.id === element.colorID);
           const categoryProd = categories.find(
             (e) => e.id === typeProd?.categoryID
