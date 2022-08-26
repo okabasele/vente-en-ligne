@@ -40,8 +40,8 @@ export default function ProductCart({
             {image && <Image src={image} layout="fill" />}
           </div>
           <div className="prod-details mx-3">
-            <p>{product.title}</p>
-            <p>{product.price}€</p>
+            <p>{title}</p>
+            <p>{price}€</p>
           </div>
           <div className="prod-quantity d-flex align-items-center">
             <button onClick={() => handleSubProduct(productId)}>-</button>

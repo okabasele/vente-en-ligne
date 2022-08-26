@@ -32,12 +32,12 @@ export default function ProductShop({ product }: ProductCartProps) {
           <div className={styles.productImageBlock}>
             <div className="image-wrap position-relative w-100 h-100">
                 
-            <Image src={product.image} objectFit="cover" layout="fill"/>
+            <Image src={image} objectFit="cover" layout="fill"/>
             </div>
           </div>
           <div className="product-info-block">
-            <div className="product-title">{product.title}</div>
-            <div className="product-price fw-semibold">{product.price}€</div>
+            <div className="product-title">{title}</div>
+            <div className="product-price fw-semibold">{price}€</div>
           </div>
         </a>
       </Link>
