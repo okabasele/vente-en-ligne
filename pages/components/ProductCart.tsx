@@ -15,11 +15,19 @@ export default function ProductCart({
   handleSubProduct,
   handleDeleteProduct,
 }: ProductCartProps) {
-  const [productImage, setProductImage] = useState('')
+  const [productQuantity, setProductQuantity] = useState(0)
+  const [productId, setProductId] = useState(0)
+  const [image, setImage] = useState('')
+  const [title, setTitle] = useState('')
+  const [price, setPrice] = useState(0)
 
   useEffect(() => {
-    if(product && product.image) {
-      setProductImage(product.image)
+    if(product) {
+      setProductQuantity(product.quantity)
+      setProductId(product.id)
+      setTitle(product.title)
+      setImage(product.image)
+      setPrice(product.price)
     }
   }, [])
   
@@ -29,22 +37,22 @@ export default function ProductCart({
       <li className="p-0 list-group-item bg-transparent">
         <div className="prod-wrap d-flex">
           <div className="prod-image position-relative w-25">
-            {productImage && <Image src={product.image} layout="fill" />}
+            {image && <Image src={image} layout="fill" />}
           </div>
           <div className="prod-details mx-3">
             <p>{product.title}</p>
             <p>{product.price}€</p>
           </div>
           <div className="prod-quantity d-flex align-items-center">
-            <button onClick={() => handleSubProduct(product.id)}>-</button>
-            <p className="mb-0 mx-1">{product.quantity}</p>
+            <button onClick={() => handleSubProduct(productId)}>-</button>
+            <p className="mb-0 mx-1">{productQuantity}</p>
             <button
               className="me-3"
-              onClick={() => handleAddProduct(product.id)}
+              onClick={() => handleAddProduct(productId)}
             >
               +
             </button>
-            <button onClick={() => handleDeleteProduct(product.id)}>
+            <button onClick={() => handleDeleteProduct(productId)}>
               <i className="bi bi-trash"></i>
             </button>
           </div>

@@ -10,10 +10,16 @@ export type ProductCartProps = {
 
 export default function ProductShop({ product }: ProductCartProps) {
   const [link, setLink] = useState('')
+  const [image, setImage] = useState('')
+  const [title, setTitle] = useState('')
+  const [price, setPrice] = useState(0)
 
   useEffect(() => {
-    if(product && product.id) {
+    if(product) {
       setLink("/product/"+product.id)
+      setTitle(product.title)
+      setImage(product.image)
+      setPrice(product.price)
     }
   }, [])
 
