@@ -92,9 +92,9 @@ export default function Cart({ showCart, setShowCart }: CartProps) {
                       Aucun produit n’a été trouvé...
                     </p>
                   ) : (
-                    products.map((product : CartProduct) => (
+                    (products || []).map((product : CartProduct) => (
                       <ProductCart
-                      key={product.id}
+                        key={product.id}
                         product={product}
                         handleAddProduct={handleAddProduct}
                         handleDeleteProduct={handleDeleteProduct}

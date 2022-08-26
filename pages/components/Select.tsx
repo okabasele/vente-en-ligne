@@ -21,7 +21,7 @@ export default function Select({ name,label,options }: SelectProps) {
             console.log(value);
           }}
         >
-          {options.map((option,id) => (
+          {(options || []).map((option,id) => (
             <option key={id} value={option}>{option}</option>
           ))}
         </select>

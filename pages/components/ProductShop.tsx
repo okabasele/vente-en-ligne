@@ -7,7 +7,7 @@ export type ProductCartProps = {
   product: ShopProduct;
 };
 
-export default function ProductCart({ product }: ProductCartProps) {
+export default function ProductShop({ product }: ProductCartProps) {
   const link = "/product/"+product.id ;
   return (
     <>

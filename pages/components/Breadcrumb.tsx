@@ -13,7 +13,7 @@ export default function Breadcrumb({links,activePage}:BreadcrumbProps) {
       <div className={styles.banner}>
         <nav aria-label="breadcrumb" className={styles.breadcrumbContent}>
           <ol className="breadcrumb">
-        { links.map((value,id)=> (<li key={id} className="breadcrumb-item">
+        { (links || []).map((value,id)=> (<li key={id} className="breadcrumb-item">
               <Link href={value.link}>
                 <a className={styles.breadcrumbLink}>{value.name}</a>
               </Link>
