@@ -3,12 +3,10 @@ import { useState } from "react";
 
 export type SelectProps = {
   name: string;
-  options: Array<string>;
+  options: string[];
 };
 
 export default function Filter({ name, options }: SelectProps) {
-  const [value, setValue] = useState(options[0]);
-
   return (
     <>
     <Link href="#">
@@ -20,7 +18,7 @@ export default function Filter({ name, options }: SelectProps) {
     </a>
     </Link>
       <ul className="collapse show ps-2" id={"collapse"+name}>
-        {options.map((option, id) => (
+        {(options || []).map((option, id) => (
           <li key={id} className="list-unstyled">
             <input type="checkbox" name={option} className="me-1" />
             <span>{option}</span>

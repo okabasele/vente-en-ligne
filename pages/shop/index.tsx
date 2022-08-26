@@ -54,7 +54,7 @@ export default function Shop() {
             <div className="price"></div> */}
           </div>
           <div className="product-list-container row row-cols-3">
-            {products.map((product: ShopProduct) => (
+            {(products || []).map((product: ShopProduct) => (
               <ProductShop key={product.id} product={product} />
             ))}
           </div>
