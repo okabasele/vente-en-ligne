@@ -29,7 +29,6 @@ export default function Cart({
   totalCost,
 }: CartProps) {
   const [showing, setShowing] = useState(true);
-
   useEffect(()=>{setShowing(showCart)},[showCart])
 
   return (
@@ -54,8 +53,9 @@ export default function Cart({
                       Aucun produit n’a été trouvé...
                     </p>
                   ) : (
-                    products.map((product) => (
+                    products.map((product : CartProduct) => (
                       <ProductCart
+                      key={product.id}
                         product={product}
                         handleAddProduct={handleAddProduct}
                         handleDeleteProduct={handleDeleteProduct}
